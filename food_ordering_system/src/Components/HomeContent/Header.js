@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
-import { Bars3Icon, XMarkIcon, ShoppingCartIcon, UserCircleIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon, XMarkIcon, ShoppingCartIcon, UserCircleIcon, CheckCircleIcon, TableCellsIcon} from '@heroicons/react/24/outline';
 import CompanyTitle from './CompanyTitle';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -140,11 +140,18 @@ export default function Header() {
                               (<>
                                 <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
                                 <button onClick={showOrders} className="relative inline-flex items-center p-1 rounded-full bg-gray-800 text-white hover:text-white focus:outline-none focus:ring-1 focus:ring-white focus:ring-offset-1 focus:ring-offset-gray-800" disabled={isLoading}>
-                                  <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
-                                  <span className="sr-only">Notifications</span>
+                                  
                                   {isAdmin ? 
-                                  (<div className="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-green-500 border-2 border-white rounded-full -top-1 -right-1 dark:border-gray-900"><CheckCircleIcon className="block h-6 w-6" aria-hidden="true" /></div>) : 
-                                  (<div className="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-1 -right-1 dark:border-gray-900">{totalItem}</div>)}
+                                  (<>
+                                    <TableCellsIcon className="h-6 w-6" aria-hidden="true" />
+                                    <span className="sr-only">Notifications</span>
+                                    <div className="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-green-500 border-2 border-white rounded-full -top-1 -right-1 dark:border-gray-900"><CheckCircleIcon className="block h-6 w-6" aria-hidden="true" /></div>
+                                  </>) : 
+                                  (<>
+                                    <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
+                                    <span className="sr-only">Notifications</span>
+                                    <div className="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-1 -right-1 dark:border-gray-900">{totalItem}</div>
+                                  </>)}
                                   
                                 </button>
 
