@@ -56,7 +56,7 @@ function AddorUpdateItems({selectedItem}) {
         const menuCategory = event.menuCategory;
         setLoading(true);
         dispatch(
-            selectedItem ? updateItem({ id, item_name, prize, description, menuCategory }) : createNewItem({ item_name, prize, description, menuCategory })
+            (selectedItem && selectedItem.id !== 0) ? updateItem({ id, item_name, prize, description, menuCategory }) : createNewItem({ item_name, prize, description, menuCategory })
         )
         .unwrap()
         .then(() => {

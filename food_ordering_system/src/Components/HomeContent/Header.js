@@ -51,6 +51,7 @@ export default function Header() {
       }
       else{
         dispatch(logout());
+        navigate("/login");
       }
     }
   };

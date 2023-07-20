@@ -78,7 +78,7 @@ export default function Ordering() {
 
     return (
         <Transition.Root show={open} as={Fragment}>
-        <Dialog as="div" className="fixed content inset-0 z-10 mt-24" onClose={setOpen}>
+        <Dialog as="div" id="staticModal" className="fixed content inset-0 mt-24" style={{zIndex: 100}} onClose={setOpen}>
             <div className="absolute h-10 inset-0 overflow-hidden">
                 <Transition.Child
                     as={Fragment}
@@ -92,7 +92,7 @@ export default function Ordering() {
                     />
                 </Transition.Child>
                 <div className="static inset-0 flex-grow p-4 space-y-0">
-                    <div className="pointer-events-none mt-24 fixed inset-y-0 right-0 flex max-w-full pl-10">
+                    <div className="pointer-events-none fixed z-500 inset-y-0 right-0 flex max-w-full pl-10" style={{marginTop: "6.5rem"}}>
                         <Transition.Child
                             as={Fragment}
                             enter="transform transition ease-in-out duration-500 sm:duration-700"

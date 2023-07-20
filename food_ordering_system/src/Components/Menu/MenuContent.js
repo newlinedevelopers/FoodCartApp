@@ -45,8 +45,14 @@ const MenuContent = React.forwardRef((props, ref) => {
         }
     }, [isLoggedIn, availableMenus, user]);
 
-    const addNewItemForm = () => {
+    const addNewItemForm = (category) => {
         dispatch(setPopUps({isPopup: true, popedForm: "addMenuItem"}));
+        const id = 0;
+        const item_name = "";
+        const prize = 0;
+        const description = "";
+        const menuCategory = category.id;
+        setSelectedItem({id: id, item_name: item_name, prize: prize, description: description, menuCategory: menuCategory});
     };
 
     const updateItemForm = (category, item) => {
@@ -74,7 +80,7 @@ const MenuContent = React.forwardRef((props, ref) => {
                         <h3 className="text-xl font-bold pt-2">{menu_details.category_name}</h3>
                         {isAdmin && 
                         <button
-                        onClick={addNewItemForm}
+                        onClick={() => addNewItemForm(menu_details)}
                         className="flex justify-center rounded-md bg-indigo-600 px-3 py-2 h-12 text-sm font-semibold leading-6 text-size text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                         >
                             Add New Item
@@ -138,7 +144,7 @@ const MenuContent = React.forwardRef((props, ref) => {
         </div>
         { isPopup 
         && (((popedForm === "addMenuItem" 
-        && <AddorUpdateItems/>) ||
+        && <AddorUpdateItems selectedItem={selectedItem}/>) ||
         (popedForm === "updateMenuItem" 
         && <AddorUpdateItems selectedItem={selectedItem}/>)) ||
         (popedForm === "deleteMenuItem" 

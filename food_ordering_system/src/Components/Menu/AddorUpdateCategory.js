@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { createCategory, updateCategory } from "../../Slices/menus";
 import * as Yup from 'yup';
 import { setPopUps } from '../../Slices/popUpForms';
+import { clearMessage } from "../../Slices/message";
 
 const validationSchema = Yup.object().shape({
   category_name: Yup.string().required('Category name is required')
@@ -39,6 +40,7 @@ function AddorUpdateCategory({selectedCategory}) {
 
     const clearCategoryFrom = () => {
         dispatch(setPopUps({isPopup: false, popedForm: ""}));
+        dispatch(clearMessage());
     };
     
     return (
